@@ -1,0 +1,291 @@
+[1mdiff --git a/notebooks/analysis_data.ipynb b/notebooks/analysis_data.ipynb[m
+[1mindex e69de29..8ce5e8a 100644[m
+[1m--- a/notebooks/analysis_data.ipynb[m
+[1m+++ b/notebooks/analysis_data.ipynb[m
+[36m@@ -0,0 +1,174 @@[m
+[32m+[m[32m{[m
+[32m+[m[32m "cells": [[m
+[32m+[m[32m  {[m
+[32m+[m[32m   "cell_type": "code",[m
+[32m+[m[32m   "execution_count": 4,[m
+[32m+[m[32m   "id": "600d6ac8",[m
+[32m+[m[32m   "metadata": {},[m
+[32m+[m[32m   "outputs": [],[m
+[32m+[m[32m   "source": [[m
+[32m+[m[32m    "path = '../data/weather_data.json'\n",[m
+[32m+[m[32m    "import pandas as pd\n",[m
+[32m+[m[32m    "import json"[m
+[32m+[m[32m   ][m
+[32m+[m[32m  },[m
+[32m+[m[32m  {[m
+[32m+[m[32m   "cell_type": "code",[m
+[32m+[m[32m   "execution_count": 8,[m
+[32m+[m[32m   "id": "8b66a511",[m
+[32m+[m[32m   "metadata": {},[m
+[32m+[m[32m   "outputs": [],[m
+[32m+[m[32m   "source": [[m
+[32m+[m[32m    "pd.set_option('display.max_columns', None)\n",[m
+[32m+[m[32m    "pd.set_option('display.max_rows', None)\n",[m
+[32m+[m[32m    "pd.set_option('display.width', None)\n",[m
+[32m+[m[32m    "pd.set_option('display.max_colwidth', None)"[m
+[32m+[m[32m   ][m
+[32m+[m[32m  },[m
+[32m+[m[32m  {[m
+[32m+[m[32m   "cell_type": "code",[m
+[32m+[m[32m   "execution_count": 9,[m
+[32m+[m[32m   "id": "e9fe94eb",[m
+[32m+[m[32m   "metadata": {},[m
+[32m+[m[32m   "outputs": [[m
+[32m+[m[32m    {[m
+[32m+[m[32m     "data": {[m
+[32m+[m[32m      "text/html": [[m
+[32m+[m[32m       "<div>\n",[m
+[32m+[m[32m       "<style scoped>\n",[m
+[32m+[m[32m       "    .dataframe tbody tr th:only-of-type {\n",[m
+[32m+[m[32m       "        vertical-align: middle;\n",[m
+[32m+[m[32m       "    }\n",[m
+[32m+[m[32m       "\n",[m
+[32m+[m[32m       "    .dataframe tbody tr th {\n",[m
+[32m+[m[32m       "        vertical-align: top;\n",[m
+[32m+[m[32m       "    }\n",[m
+[32m+[m[32m       "\n",[m
+[32m+[m[32m       "    .dataframe thead th {\n",[m
+[32m+[m[32m       "        text-align: right;\n",[m
+[32m+[m[32m       "    }\n",[m
+[32m+[m[32m       "</style>\n",[m
+[32m+[m[32m       "<table border=\"1\" class=\"dataframe\">\n",[m
+[32m+[m[32m       "  <thead>\n",[m
+[32m+[m[32m       "    <tr style=\"text-align: right;\">\n",[m
+[32m+[m[32m       "      <th></th>\n",[m
+[32m+[m[32m       "      <th>weather</th>\n",[m
+[32m+[m[32m       "      <th>base</th>\n",[m
+[32m+[m[32m       "      <th>visibility</th>\n",[m
+[32m+[m[32m       "      <th>dt</th>\n",[m
+[32m+[m[32m       "      <th>timezone</th>\n",[m
+[32m+[m[32m       "      <th>id</th>\n",[m
+[32m+[m[32m       "      <th>name</th>\n",[m
+[32m+[m[32m       "      <th>cod</th>\n",[m
+[32m+[m[32m       "      <th>coord.lon</th>\n",[m
+[32m+[m[32m       "      <th>coord.lat</th>\n",[m
+[32m+[m[32m       "      <th>main.temp</th>\n",[m
+[32m+[m[32m       "      <th>main.feels_like</th>\n",[m
+[32m+[m[32m       "      <th>main.temp_min</th>\n",[m
+[32m+[m[32m       "      <th>main.temp_max</th>\n",[m
+[32m+[m[32m       "      <th>main.pressure</th>\n",[m
+[32m+[m[32m       "      <th>main.humidity</th>\n",[m
+[32m+[m[32m       "      <th>main.sea_level</th>\n",[m
+[32m+[m[32m       "      <th>main.grnd_level</th>\n",[m
+[32m+[m[32m       "      <th>wind.speed</th>\n",[m
+[32m+[m[32m       "      <th>wind.deg</th>\n",[m
+[32m+[m[32m       "      <th>wind.gust</th>\n",[m
+[32m+[m[32m       "      <th>clouds.all</th>\n",[m
+[32m+[m[32m       "      <th>sys.type</th>\n",[m
+[32m+[m[32m       "      <th>sys.id</th>\n",[m
+[32m+[m[32m       "      <th>sys.country</th>\n",[m
+[32m+[m[32m       "      <th>sys.sunrise</th>\n",[m
+[32m+[m[32m       "      <th>sys.sunset</th>\n",[m
+[32m+[m[32m       "    </tr>\n",[m
+[32m+[m[32m       "  </thead>\n",[m
+[32m+[m[32m       "  <tbody>\n",[m
+[32m+[m[32m       "    <tr>\n",[m
+[32m+[m[32m       "      <th>0</th>\n",[m
+[32m+[m[32m       "      <td>[{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}]</td>\n",[m
+[32m+[m[32m       "      <td>stations</td>\n",[m
+[32m+[m[32m       "      <td>10000</td>\n",[m
+[32m+[m[32m       "      <td>1777166982</td>\n",[m
+[32m+[m[32m       "      <td>-10800</td>\n",[m
+[32m+[m[32m       "      <td>3448439</td>\n",[m
+[32m+[m[32m       "      <td>São Paulo</td>\n",[m
+[32m+[m[32m       "      <td>200</td>\n",[m
+[32m+[m[32m       "      <td>-46.6361</td>\n",[m
+[32m+[m[32m       "      <td>-23.5475</td>\n",[m
+[32m+[m[32m       "      <td>20.95</td>\n",[m
+[32m+[m[32m       "      <td>21.06</td>\n",[m
+[32m+[m[32m       "      <td>20.75</td>\n",[m
+[32m+[m[32m       "      <td>24.69</td>\n",[m
+[32m+[m[32m       "      <td>1016</td>\n",[m
+[32m+[m[32m       "      <td>75</td>\n",[m
+[32m+[m[32m       "      <td>1016</td>\n",[m
+[32m+[m[32m       "      <td>925</td>\n",[m
+[32m+[m[32m       "      <td>0.45</td>\n",[m
+[32m+[m[32m       "      <td>357</td>\n",[m
+[32m+[m[32m       "      <td>0.45</td>\n",[m
+[32m+[m[32m       "      <td>0</td>\n",[m
+[32m+[m[32m       "      <td>1</td>\n",[m
+[32m+[m[32m       "      <td>8394</td>\n",[m
+[32m+[m[32m       "      <td>BR</td>\n",[m
+[32m+[m[32m       "      <td>1777109046</td>\n",[m
+[32m+[m[32m       "      <td>1777149876</td>\n",[m
+[32m+[m[32m       "    </tr>\n",[m
+[32m+[m[32m       "  </tbody>\n",[m
+[32m+[m[32m       "</table>\n",[m
+[32m+[m[32m       "</div>"[m
+[32m+[m[32m      ],[m
+[32m+[m[32m      "text/plain": [[m
+[32m+[m[32m       "                                                                     weather  \\\n",[m
+[32m+[m[32m       "0  [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01n'}]   \n",[m
+[32m+[m[32m       "\n",[m
+[32m+[m[32m       "       base  visibility          dt  timezone       id       name  cod  \\\n",[m
+[32m+[m[32m       "0  stations       10000  1777166982    -10800  3448439  São Paulo  200   \n",[m
+[32m+[m[32m       "\n",[m
+[32m+[m[32m       "   coord.lon  coord.lat  main.temp  main.feels_like  main.temp_min  \\\n",[m
+[32m+[m[32m       "0   -46.6361   -23.5475      20.95            21.06          20.75   \n",[m
+[32m+[m[32m       "\n",[m
+[32m+[m[32m       "   main.temp_max  main.pressure  main.humidity  main.sea_level  \\\n",[m
+[32m+[m[32m       "0          24.69           1016             75            1016   \n",[m
+[32m+[m[32m       "\n",[m
+[32m+[m[32m       "   main.grnd_level  wind.speed  wind.deg  wind.gust  clouds.all  sys.type  \\\n",[m
+[32m+[m[32m       "0              925        0.45       357       0.45           0         1   \n",[m
+[32m+[m[32m       "\n",[m
+[32m+[m[32m       "   sys.id sys.country  sys.sunrise  sys.sunset  \n",[m
+[32m+[m[32m       "0    8394          BR   1777109046  1777149876  "[m
+[32m+[m[32m      ][m
+[32m+[m[32m     },[m
+[32m+[m[32m     "execution_count": 9,[m
+[32m+[m[32m     "metadata": {},[m
+[32m+[m[32m     "output_type": "execute_result"[m
+[32m+[m[32m    }[m
+[32m+[m[32m   ],[m
+[32m+[m[32m   "source": [[m
+[32m+[m[32m    "with open(path) as f:\n",[m
+[32m+[m[32m    "    data = json.load(f)\n",[m
+[32m+[m[32m    "\n",[m
+[32m+[m[32m    "df = pd.json_normalize(data)\n",[m
+[32m+[m[32m    "df.head()"[m
+[32m+[m[32m   ][m
+[32m+[m[32m  }[m
+[32m+[m[32m ],[m
+[32m+[m[32m "metadata": {[m
+[32m+[m[32m  "kernelspec": {[m
+[32m+[m[32m   "display_name": "pipeline_openweather",[m
+[32m+[m[32m   "language": "python",[m
+[32m+[m[32m   "name": "python3"[m
+[32m+[m[32m  },[m
+[32m+[m[32m  "language_info": {[m
+[32m+[m[32m   "codemirror_mode": {[m
+[32m+[m[32m    "name": "ipython",[m
+[32m+[m[32m    "version": 3[m
+[32m+[m[32m   },[m
+[32m+[m[32m   "file_extension": ".py",[m
+[32m+[m[32m   "mimetype": "text/x-python",[m
+[32m+[m[32m   "name": "python",[m
+[32m+[m[32m   "nbconvert_exporter": "python",[m
+[32m+[m[32m   "pygments_lexer": "ipython3",[m
+[32m+[m[32m   "version": "3.12.3"[m
+[32m+[m[32m  }[m
+[32m+[m[32m },[m
+[32m+[m[32m "nbformat": 4,[m
+[32m+[m[32m "nbformat_minor": 5[m
+[32m+[m[32m}[m
+[1mdiff --git a/src/extract_data.py b/src/extract_data.py[m
+[1mindex c6a8c16..54d724b 100644[m
+[1m--- a/src/extract_data.py[m
+[1m+++ b/src/extract_data.py[m
+[36m@@ -5,9 +5,6 @@[m [mfrom pathlib import Path[m
+ import logging[m
+ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')[m
+ [m
+[31m-api_key = '78faacaa5c6adf3fcf9ef2700fa7f853'[m
+[31m-url = f'https://api.openweathermap.org/data/2.5/weather?q=Sao Paulo,BR&units=metric&appid={api_key}'[m
+[31m-[m
+ def extract_weather_data(url:str) -> list:[m
+     response = requests.get(url)[m
+     data = response.json() #transforma a resposta da API em um dicionario[m
+[36m@@ -29,4 +26,3 @@[m [mdef extract_weather_data(url:str) -> list:[m
+     logging.info(f"Arquivo salvo em {output_path}")[m
+     return data[m
+ [m
+[31m-extract_weather_data(url)[m
+\ No newline at end of file[m
+[1mdiff --git a/src/transform_data.py b/src/transform_data.py[m
+[1mindex 08b5059..d535858 100644[m
+[1m--- a/src/transform_data.py[m
+[1m+++ b/src/transform_data.py[m
+[36m@@ -5,6 +5,40 @@[m [mimport json[m
+ import logging[m
+ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')[m
+ [m
+[32m+[m[32mpath_name = Path(__file__).parent.parent / 'data' / 'weather_data.json'[m
+[32m+[m[32m#mesma coisa que '../data/weather_data.son' porém evitamos alguns erros[m
+[32m+[m[32mcolumns_names_to_drop = ['weather', 'weather_icon', 'sys.type'][m
+[32m+[m[32mcolumns_names_to_rename = {[m
+[32m+[m[32m  "base": "base",[m
+[32m+[m[32m        "visibility": "visibility",[m
+[32m+[m[32m        "dt": "datetime",[m
+[32m+[m[32m        "timezone": "timezone",[m
+[32m+[m[32m        "id": "city_id",[m[41m [m
+[32m+[m[32m        "name": "city_name",[m
+[32m+[m[32m        "cod": "code",[m
+[32m+[m[32m        "coord.lon": "longitude",[m
+[32m+[m[32m        "coord.lat": "latitude",[m
+[32m+[m[32m        "main.temp": "temperature",[m
+[32m+[m[32m        "main.feels_like": "feels_like",[m
+[32m+[m[32m        "main.temp_min": "temp_min",[m
+[32m+[m[32m        "main.temp_max": "temp_max",[m
+[32m+[m[32m        "main.pressure": "pressure",[m
+[32m+[m[32m        "main.humidity": "humidity",[m
+[32m+[m[32m        "main.sea_level": "sea_level",[m
+[32m+[m[32m        "main.grnd_level": "grnd_level",[m
+[32m+[m[32m        "wind.speed": "wind_speed",[m
+[32m+[m[32m        "wind.deg": "wind_deg",[m
+[32m+[m[32m        "wind.gust": "wind_gust",[m
+[32m+[m[32m        "clouds.all": "clouds",[m[41m [m
+[32m+[m[32m        "sys.type": "sys_type",[m[41m                 [m
+[32m+[m[32m        "sys.id": "sys_id",[m[41m                [m
+[32m+[m[32m        "sys.country": "country",[m[41m                [m
+[32m+[m[32m        "sys.sunrise": "sunrise",[m[41m                [m
+[32m+[m[32m        "sys.sunset": "sunset",[m
+[32m+[m[32m        # weather_id, weather_main, weather_description[m[41m [m
+[32m+[m[32m    }[m
+[32m+[m[32mcolumns_to_normalize_datetime = ['datetime', 'sunrise', 'sunset'][m
+[32m+[m
+ def create_dataframe(path_name:str) -> pd.DataFrame:[m
+     logging.info("Criando Dataframe do arquivo JSON")[m
+     path = path_name[m
+[36m@@ -18,3 +52,46 @@[m [mdef create_dataframe(path_name:str) -> pd.DataFrame:[m
+     df = pd.json_normalize(data)[m
+     logging.info(f"\n Dataframe criado com {len(df)} linha(s)")[m
+     return df[m
+[32m+[m
+[32m+[m[32mdef normalize_weather_columns(df: pd.DataFrame) -> pd.DataFrame:[m
+[32m+[m[32m    df_weather = pd.json_normalize(df['weather'].apply(lambda x: x[0]))[m
+[32m+[m
+[32m+[m[32m    df_weather = df_weather.rename(columns={[m
+[32m+[m[32m        'id': 'weather_id',[m
+[32m+[m[32m        'main': 'weather_main',[m
+[32m+[m[32m        'description': 'weather_description',[m
+[32m+[m[32m        'icon': 'weather_icon'[m
+[32m+[m[32m    })[m
+[32m+[m
+[32m+[m[32m    df = pd.concat([df, df_weather], axis=1)[m
+[32m+[m[32m    logging.info(f"\n Coluna 'weather' normalizada - {len(df.columns)} colunas")[m
+[32m+[m[32m    return df[m
+[32m+[m
+[32m+[m[32mdef drop_columns(df: pd.DataFrame, columns_names:list[str]) ->pd.DataFrame:[m
+[32m+[m[32m    logging.info(f"\n Removendo Colunas: {columns_names}")[m
+[32m+[m[32m    df = df.drop(columns=columns_names)[m
+[32m+[m[32m    logging.info(f"\n Colunas removidas - {len(df.columns)} colunas restantes")[m
+[32m+[m[32m    return df[m
+[32m+[m
+[32m+[m[32mdef rename_columns(df: pd.DataFrame, columns_names:dict[str, str]) -> pd.DataFrame:[m
+[32m+[m[32m    logging.info(f"\n Renomeando {len(columns_names)} colunas...")[m
+[32m+[m[32m    df = df.rename(columns=columns_name)[m[41m    [m
+[32m+[m[32m    logging.info("Colunas renomeadas")[m
+[32m+[m[32m    return df[m
+[32m+[m
+[32m+[m[32mdef normalize_datetime_columns(df: pd.DataFrame, columns_names:list[str]) -> pd.DataFrame:[m
+[32m+[m[32m    logging.info(f"\n Convertendo colunas para datetime: {columns_names}")[m
+[32m+[m[32m    for name in columns_names:[m
+[32m+[m[32m        df[name] = pd.to_datetime(df[name], unit='s', utc=True).dt.tz_convert('America/Sao_Paulo')[m
+[32m+[m[32m    logging.info("Colunas convertidas para datetime\n")[m
+[32m+[m[32m    return df[m
+[32m+[m[41m    [m
+[32m+[m[32mdef data_transformations():[m
+[32m+[m[32m    print("\n Iniciando transformações")[m
+[32m+[m[32m    df = create_dataframe(path_name)[m
+[32m+[m[32m    df = normalize_weather_columns(df)[m
+[32m+[m[32m    df = drop_columns(df, columns_names_to_drop)[m
+[32m+[m[32m    df = rename_columns(df, columns_names_to_rename)[m
+[32m+[m[32m    df = normalize_datetime_columns(df, columns_to_normalize_datetime)[m
+[32m+[m[32m    logging.info("✓ Transformações concluídas\n")[m
+[32m+[m[32m    return df[m
