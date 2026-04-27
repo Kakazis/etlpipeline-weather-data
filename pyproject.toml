@@ -11,3 +11,8 @@ dependencies = [
     "requests>=2.33.1",
     "sqlalchemy>=2.0.49",
 ]
+
+[dependency-groups]
+dev = [
+    "apache-airflow>=3.2.1",
+]
