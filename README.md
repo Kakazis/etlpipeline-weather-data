@@ -34,18 +34,22 @@ Load (PostgreSQL)
 Orchestration (Apache Airflow)
       ↓
 Dockerized Local Environment
+```
 
 ⚙️ Tech Stack
-Python 3.12
-Pandas
-SQLAlchemy
-PostgreSQL
-Apache Airflow
-Docker & Docker Compose
-UV Package Manager
-Git / GitHub
-WSL (Windows Subsystem for Linux)
+| Category        | Tools                   |
+| --------------- | ----------------------- |
+| Language        | Python 3.12             |
+| Data Processing | Pandas                  |
+| Database        | PostgreSQL              |
+| Orchestration   | Apache Airflow          |
+| Containers      | Docker / Docker Compose |
+| Package Manager | UV                      |
+| Version Control | Git / GitHub            |
+| Environment     | WSL / Linux             |
 
+
+```text
 📁 Project Structure
 etlpipeline-weather-data/
 │── dags/                 # Airflow DAGs
@@ -60,7 +64,7 @@ etlpipeline-weather-data/
 │── main.py               # Local pipeline execution
 │── pyproject.toml
 │── README.md
-
+```
 🔄 ETL Pipeline Steps
 1️⃣ Extract
 
@@ -84,24 +88,30 @@ Loads transformed dataset into PostgreSQL.
 Airflow schedules and monitors pipeline execution.
 
 ▶️ How to Run
+
 Clone repository
+```bash
 git clone https://github.com/Kakazis/etlpipeline-weather-data.git
 cd etlpipeline-weather-data
+```
 Start containers
+```bash
 docker compose up -d
-Run local ETL test
-uv run main.py
+```
 Access Airflow
+```text
 http://localhost:8080
-
+```
 Default credentials:
-
+```text
 Username: airflow
 Password: airflow
+```
 📊 Sample Output
+```text
 ✅ Dados carregados com sucesso!
 Total de registros na tabela: 1
-
+```
 💡 Key Learnings
 
 During this project I practiced:
